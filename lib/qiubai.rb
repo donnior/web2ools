@@ -68,20 +68,20 @@ class QiuBaiConsole
         doc.css("div.block").each do |link|
             c_map = {}
             
-            content_div = css_one(link, "div.content")
+            content_div = css_first(link, "div.content")
             content_div.children.each do |child|  
                   child.replace(Nokogiri::XML::Text.new("\n", child.document)) if child.name == 'br'
             end
             content = content_div.content
             c_map[:content] = content
 
-            author = css_one(link, "div.author a")
+            author = css_first(link, "div.author a")
             c_map[:author] = author.content.strip! if author
 
-            img = css_one(link, "div.thumb img")
+            img = css_first(link, "div.thumb img")
             c_map[:image] = img["src"] if img
             
-            tags = css_one(link, "div.tags")
+            tags = css_first(link, "div.tags")
             c_map[:tags] = tags.content.split("\n").reject{|t| t.strip! } if tags
             
             articles << c_map

@@ -16,8 +16,13 @@ module WebTools
         Nokogiri::HTML(open(url, 'User-Agent' => USER_AGENT), nil, encoding)
     end
     
-    def css_one(node, css)
+    def css_first(node, css)
         e = node.css(css)
+        e.empty? ? nil : e.first
+    end
+    
+    def xpath_first(node, xpath)
+        e = node.xpath(xpath)
         e.empty? ? nil : e.first
     end
     
