@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+#encoding: UTF-8
+
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require "qiubai.rb"
+
+case ARGV.size
+  when 0
+    puts "Error: you must specified at least one argument"
+  else  
+    BaiduZhidaoConsole.new.run(ARGV.join(" "))
+end
+
