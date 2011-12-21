@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+
+require "google.rb"
+
+
+
+
+options = {}
+
+case ARGV.size
+  when 0
+  when 1
+    options[:query] = ARGV[0]
+    GoogleConsole.new.search(options[:query])
+  else
+    options[:query] = ARGV.join(" ")
+    GoogleConsole.new.search(options[:query])
+end
+
+

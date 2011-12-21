@@ -4,4 +4,25 @@ $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
 require "qiubai.rb"
 
+require 'optparse'
+
+help = <<HELP
+QiubaiConsole is a console tools for accessing www.qiushibaike.com with command line.
+
+Basic Command Line Usage:
+  qiubai                                                   # . 
+  qiubai <hot time choice>                                 # . -> 8, 24, 
+  
+  Default hot time choice will be '8hr' if none is specified.
+
+HELP
+
+puts ARGV
+
+opts = OptionParser.new do |opts|
+  opts.banner = help  
+end
+
+opts.parse!
+
 QiuBaiConsole.new.run_with_mode
