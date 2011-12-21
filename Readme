@@ -1,1 +1,21 @@
-Web tools for console.
+
+h1. Jekyll
+
+By Donnior!
+
+Web2tools is a collection for web accessing with command line. Currently including:
+
+* QiuBai Console : command for "www.qiushibaike.com"
+* Google Console : command for searching with "www.google.com"
+
+h2. QiuBai Console
+
+Since "www.qiushibaike.com" has many hot choince like "latest", "8hours", "24hours" and "weekly", 
+you should choose the hot mode which want to browse; the default hot mode will be "8hours" if no
+given hot mode choose.
+
+Run with '@qiubai@' under /bin.
+
+h2. Google
+
+To be implement.
