@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Donny Xie"]
   s.email       = 'donnior@gmail.com'
   s.files       = FileList["lib/*.rb"].to_a
-  s.homepage    = 'http://rubygems.org/gems/web2ools'
+  s.homepage    = 'http://github.com/donnior/web2ools'
   s.executables = ['qiubai', 'zhidao', 'google']
 end
