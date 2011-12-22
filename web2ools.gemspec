@@ -7,7 +7,14 @@ Gem::Specification.new do |s|
   s.description = "A web tools gem"
   s.authors     = ["Donny Xie"]
   s.email       = 'donnior@gmail.com'
-  s.files       = FileList["lib/*.rb"].to_a
+  # s.files       = FileList["lib/*.rb"].to_a
   s.homepage    = 'http://github.com/donnior/web2ools'
   s.executables = ['qiubai', 'zhidao', 'google']
+  s.files = %w[
+    lib/web2ools.rb
+    lib/web2ools/core.rb
+    lib/web2ools/google.rb
+    lib/web2ools/qiubai.rb
+    lib/web2ools/zhidao.rb            
+  ]
 end

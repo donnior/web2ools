@@ -3,7 +3,7 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
-require "qiubai.rb"
+require "web2ools"
 
 case ARGV.size
   when 0

@@ -2,10 +2,7 @@
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 
-require "google.rb"
-
-
-
+require "web2ools"
 
 options = {}
 
