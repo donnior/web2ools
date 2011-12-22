@@ -15,7 +15,7 @@ Since "www.qiushibaike.com" has many hot choince like "latest", "8hours", "24hou
 you should choose the hot mode which want to browse; the default hot mode will be "8hours" if no
 given hot mode choose.
 
-Run with '@qiubai@' under /bin.
+Run with @qiubai@ under /bin.
 
 h2. Google Console
 
@@ -23,4 +23,4 @@ To be implement.
 
 h2. Baidu Zhidao Console
 
-Query Baidu Zhidao with '@qiubai xxx@'
+Query Baidu Zhidao with @zhidao xxx@
