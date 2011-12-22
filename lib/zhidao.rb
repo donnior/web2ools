@@ -31,14 +31,21 @@ class BaiduZhidaoConsole
   
   def print_entity(entity)
     puts "#{'--------------------------' * 5}"
-    puts "[ title ]  " + entity[:title]
-    puts "[ summary ]  "+entity[:summary]
+    puts "[ title2 ]  " + entity[:title] +" \t\t@#{entity[:time]}"
+    puts "\n[ summary ]  "+entity[:summary]
   end
   
   def transform(node)
+      # (node.xpath('div//text()') - node.xpath('div//a//text()')).each do |v|
+      #   print v.text.split.join.gsub(/\r/,"").gsub(/\n/,"")
+      # end
+
+      text = (node.xpath('div//text()') - node.xpath('div//a//text()')).text.gsub(/\r/,"").gsub(/\n/,"")
+      time = text.split("最佳").first.slice(1..-1).gsub(/\t/,"").slice(1..-4)
     {
-      :title => node.css("a").text,
-      :summary => node.css("span").text
+      :title => css_first(node,"a").text,
+      :summary => node.css("span").text,
+      :time => time
     }
   end
   
