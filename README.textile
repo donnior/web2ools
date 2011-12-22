@@ -7,6 +7,7 @@ Web2tools is a collection for web accessing with command line. Currently includi
 
 * QiuBai Console : command for "www.qiushibaike.com"
 * Google Console : command for searching with "www.google.com"
+* Baidu Zhidao Console : command for searching with Baidu Zhidao
 
 h2. QiuBai Console
 
@@ -16,6 +17,10 @@ given hot mode choose.
 
 Run with '@qiubai@' under /bin.
 
-h2. Google
+h2. Google Console
 
 To be implement.
+
+h2. Baidu Zhidao Console
+
+Query Baidu Zhidao with '@qiubai xxx@'
