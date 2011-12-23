@@ -15,14 +15,8 @@ class BaiduZhidaoConsole
     query_url = encoded_query_url(kw)
     doc = open_html_doc(query_url, "gb2312")
     doc.xpath("//div[@id='center']/table[position()>1]/tr/td[@class='f']").each do |t|
-      print_entity transform(t)
+      print_item transform(t)
     end
-  end
-  
-  def print_entity(entity)
-    puts "#{'--------------------------' * 5}"
-    puts "[ title2 ]  " + entity[:title] +" \t\t@#{entity[:time]}"
-    puts "\n[ summary ]  "+entity[:summary]
   end
   
   def transform(node)
@@ -37,6 +31,12 @@ class BaiduZhidaoConsole
       :summary => node.css("span").text,
       :time => time
     }
+  end
+
+  def print_item(entity)
+    puts "#{'--------------------------' * 5}"
+    puts "[ title2 ]  " + entity[:title] +" \t\t@#{entity[:time]}"
+    puts "\n[ summary ]  "+entity[:summary]
   end
   
 end
