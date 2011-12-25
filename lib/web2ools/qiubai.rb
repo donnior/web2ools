@@ -3,6 +3,12 @@ class QiuBaiConsole
     
     include WebTools
     include ConsoleTools
+
+    NameColor = "\e[33m"
+    CommandColor = "\e[36m"
+    DefaultColor = "\e[0m"
+    ErrorColor = "\e[31m"
+    SpliterColor = "\e[34m"
     
     def url_with_mode(page)
         if mode == "24"
@@ -85,10 +91,10 @@ class QiuBaiConsole
     end
 
     def print_item(a)
-        puts "#{a[:content]} \n"
-        puts "\n[image] #{a[:image]} \n" if a[:image]
-        print "\n#{a[:tags]}" if a[:tags]
-        print "\t(#{a[:author]})" if a[:author]
-        puts "\n\n#{'***********' * 10}\n\n"
+        puts "#{DefaultColor}#{a[:content]} \n"
+        puts "\n#{CommandColor}[image] #{a[:image]}\n" if a[:image]
+        print "\n#{NameColor}#{a[:tags]}" if a[:tags]
+        print "\t#{NameColor}(#{a[:author]})" if a[:author]
+        puts "\n\n#{SpliterColor}#{'***********' * 10}\n\n"
     end
 end
