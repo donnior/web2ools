@@ -40,7 +40,9 @@ class QiuBaiConsole
     end
     
     def list_articles_in_page(url)
-        extract_articles_from_doc(open_html_doc(url))
+        open_html_doc(url).css("div.block").collect do |link|
+            transform(link)
+        end
     end
     
     def iterate_articles_with_command(articles)
@@ -58,14 +60,6 @@ class QiuBaiConsole
                 exit 1
             end
         end
-    end
-    
-    def extract_articles_from_doc(doc)
-        articles = []
-        doc.css("div.block").each do |link|
-            articles << transform(link)
-        end
-        articles
     end
 
     def  transform(node)            
@@ -95,6 +89,6 @@ class QiuBaiConsole
         puts "\n#{CommandColor}[image] #{a[:image]}\n" if a[:image]
         print "\n#{NameColor}#{a[:tags]}" if a[:tags]
         print "\t#{NameColor}(#{a[:author]})" if a[:author]
-        puts "\n\n#{SpliterColor}#{'***********' * 10}\n\n"
+        puts "\n\n#{SpliterColor}#{'***********' * 10}#{DefaultColor}\n\n"
     end
 end
