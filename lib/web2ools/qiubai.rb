@@ -12,11 +12,11 @@ class QiuBaiConsole
     
     def url_with_mode(page)
         if mode == "24"
-            "http://www.qiushibaike.com/new2/hot/20/page/#{page}"
+            "http://www.qiushibaike.com/hot/page/#{page}"
         elsif mode == "8"
-            "http://www.qiushibaike.com/new2/8hr/20/page/#{page}"
+            "http://www.qiushibaike.com/8hr/page/#{page}"
         else
-            "http://www.qiushibaike.com/new2/8hr/20/page/#{page}"
+            "http://www.qiushibaike.com/8hr/page/#{page}"
         end
     end
     
@@ -46,10 +46,10 @@ class QiuBaiConsole
     end
     
     def iterate_articles_with_command(articles)
-        puts "\n#{'***********' * 10}\n\n"
+        puts "#{'***********' * 10}"
         articles.each do |a|
             print_item a
-            # print "-------------\n: q => quit, o => open image, * => next :"
+            print " >>>>> q => quit, o => open image, * => next :"
             ch = get_cmd_char
             if ch == 'o' && a[:image]
                 system("open #{a[:image]}")
@@ -85,10 +85,14 @@ class QiuBaiConsole
     end
 
     def print_item(a)
-        puts "#{DefaultColor}#{a[:content]} \n"
-        puts "\n#{CommandColor}[image] #{a[:image]}\n" if a[:image]
-        print "\n#{NameColor}#{a[:tags]}" if a[:tags]
-        print "\t#{NameColor}(#{a[:author]})" if a[:author]
-        puts "\n\n#{SpliterColor}#{'***********' * 10}#{DefaultColor}\n\n"
+        print "#{DefaultColor}#{a[:content].chomp} \n" if a[:content]
+        puts "#{CommandColor}[image] #{a[:image]}" if a[:image]
+        author_string = "\n#{NameColor}"
+        author_string << "#{a[:tags]}\t" if a[:tags]
+        author_string << "(#{a[:author]})" if a[:author]
+        # print "#{NameColor}#{a[:tags]}\t" if a[:tags]
+        # print "#{NameColor}(#{a[:author]})" if a[:author]
+        puts author_string if a[:tags] || a[:author]
+        puts "#{SpliterColor}#{'***********' * 10}#{DefaultColor}\n"
     end
 end
