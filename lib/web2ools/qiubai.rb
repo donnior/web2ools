@@ -11,21 +11,20 @@ class QiuBaiConsole
     SpliterColor = "\e[34m"
     
     def url_with_mode(page)
-        if mode == "24"
-            "http://www.qiushibaike.com/hot/page/#{page}"
-        elsif mode == "8"
-            "http://www.qiushibaike.com/8hr/page/#{page}"
-        else
-            "http://www.qiushibaike.com/8hr/page/#{page}"
-        end
+        "http://www.qiushibaike.com/#{mode_link}/page/#{page}"
     end
     
     def mode
         @mode ? @mode : "24"
     end
 
+    def mode_link
+        mapping = { "24" => "hot", "8" => "8hr", "w" => "week", "m" => "month" }
+        mapping[mode] || "hot"
+    end
+
     def run_with_mode
-        print "Please input mode: 8 => latest, 24 => 24hours :"
+        print "Please input mode: h => hot, 8 => 8hr, 24 => 24hours, w => week, m => month :"
         @mode = gets.chomp
         puts "\n\n#{'***********' * 10}\n\n"        
         run
