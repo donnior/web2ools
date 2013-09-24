@@ -45,19 +45,30 @@ class QiuBaiConsole
     end
     
     def iterate_articles_with_command(articles)
-        puts "#{'***********' * 10}"
         articles.each do |a|
             print_item a
-            print " >>>>> q => quit, o => open image, * => next :"
-            ch = get_cmd_char
+            
+            print "\n >>>>> q => quit, o => open image, * => next : "
+
+            require 'io/console'
+            ch = STDIN.getch
+            print "\r"
+            puts "#{' ' * 50}"
+            $stdout.flush
+            
             if ch == 'o' && a[:image]
                 system("open #{a[:image]}")
-                ch = get_cmd_char
+                print " >>>>> q => quit, * => next : "
+                ch = STDIN.getch
+                print "\r"
+                puts "#{' ' * 100}"
+                $stdout.flush
             end
             if ch == 'q'
                 puts "\nquit the qiubai console ........."
                 exit 1
             end
+
         end
     end
 
@@ -84,14 +95,19 @@ class QiuBaiConsole
     end
 
     def print_item(a)
-        print "#{DefaultColor}#{a[:content].chomp} \n" if a[:content]
-        puts "#{CommandColor}[image] #{a[:image]}" if a[:image]
-        author_string = "\n#{NameColor}"
-        author_string << "#{a[:tags]}\t" if a[:tags]
-        author_string << "(#{a[:author]})" if a[:author]
-        # print "#{NameColor}#{a[:tags]}\t" if a[:tags]
-        # print "#{NameColor}(#{a[:author]})" if a[:author]
-        puts author_string if a[:tags] || a[:author]
-        puts "#{SpliterColor}#{'***********' * 10}#{DefaultColor}\n"
+        print "#{SpliterColor}#{'***********' * 10}#{DefaultColor}"
+        if a[:content] && !a[:content].empty?
+            print "#{DefaultColor}#{a[:content].chomp}" 
+        end
+        if a[:image]
+            puts "#{CommandColor}[image] #{a[:image]}" if a[:image]
+        end 
+
+        if a[:author]
+            puts "\n#{NameColor}(#{a[:author]})"
+        end
+
+        
+        print "#{SpliterColor}#{' ' * 10}#{DefaultColor}"
     end
 end
